@@ -5,6 +5,7 @@ import MediaObject from './components/MediaObject';
 
 function App () {
 
+  const [streamInfo, setstreamInfo] = useState({})
   const [ytUrl, setYtUrl] = useState("");
   const [urlResp, seturlResp] = useState()
 
@@ -14,38 +15,39 @@ function App () {
 
   const handleConvert = async () => {
     const player = new window.Audio();
-    YtConvert.ytToMp3(ytUrl)
-      .then(response => {
-        
-        player.src = window.URL.createObjectURL(new Blob([response], {type : 'audio/mpeg'}));
-        let playPromise =player.play();
+
+    const info = await YtConvert.getStreamInfo(ytUrl);    
+
+    setstreamInfo(info);
+
+    const audioSream = await YtConvert.ytToMp3(ytUrl);
+
+    player.src = window.URL.createObjectURL(new Blob([audioSream], { type: 'audio/mp3' }));
+    let playPromise = player.play();
 
 
-        if (playPromise !== undefined) {
-          playPromise
-            .then(_ => {
-              // Automatic playback started!
-              // Show playing UI.
-              console.log("audio played auto");
-            })
-            .catch(error => {
-              // Auto-play was prevented
-              // Show paused UI.
-              console.log(error);
-              
-              console.log("playback prevented");
-            });
-        }
+    if (playPromise !== undefined) {
+      playPromise
+        .then(_ => {
+          // Automatic playback started!
+          // Show playing UI.
+          console.log("audio played auto");
+        })
+        .catch(error => {
+          // Auto-play was prevented
+          // Show paused UI.
+          console.log(error);
 
-        // const link = document.createElement('a');
-        // link.href = url;
-        // link.setAttribute('download', 'audio.mp3'); //or any other extension
-        // document.body.appendChild(link);
-        // link.click();
-      })
-      .catch(e => {
-        console.log(e);
-      });
+          console.log("playback prevented");
+        });
+    }
+
+    // const link = document.createElement('a');
+    // link.href = url;
+    // link.setAttribute('download', 'audio.mp3'); //or any other extension
+    // document.body.appendChild(link);
+    // link.click();
+
   }
 
   return (
@@ -76,8 +78,7 @@ function App () {
 
 
 
-        <MediaObject />
-
+        <MediaObject info={streamInfo} />
 
       </div>
     </main>

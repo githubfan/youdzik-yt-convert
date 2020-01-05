@@ -5,7 +5,7 @@ const BASE_URL = 'https://box-myserver.unubo.app/api/yt';
 export default class YtConvert {
 
   static async getStreamInfo (inputVal) {
-    const url = `${BASE_URL}media/info?url=${inputVal}`;
+    const url = `${BASE_URL}/media/info?url=${inputVal}`;
     const result = await axios.get(url);
     const data = await result.data;
     return data;
