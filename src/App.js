@@ -16,11 +16,26 @@ function App () {
     const player = new window.Audio();
     YtConvert.ytToMp3(ytUrl)
       .then(response => {
-        const url = window.URL.createObjectURL(new Blob([response.data], {type : 'audio/mp3'}));
-        seturlResp(url);
+        
+        player.src = window.URL.createObjectURL(new Blob([response], {type : 'audio/mpeg'}));
+        let playPromise =player.play();
 
-        player.src = url;
-        player.play();
+
+        if (playPromise !== undefined) {
+          playPromise
+            .then(_ => {
+              // Automatic playback started!
+              // Show playing UI.
+              console.log("audio played auto");
+            })
+            .catch(error => {
+              // Auto-play was prevented
+              // Show paused UI.
+              console.log(error);
+              
+              console.log("playback prevented");
+            });
+        }
 
         // const link = document.createElement('a');
         // link.href = url;
@@ -55,7 +70,7 @@ function App () {
               type="button"
               onClick={handleConvert}>mp3</button>
 
-            <button className="btn btn-outline-secondary" type="button">Button</button>
+            <button className="btn btn-outline-secondary" type="button">mp4</button>
           </div>
         </div>
 
