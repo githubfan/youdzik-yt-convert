@@ -13,11 +13,11 @@ export default function App () {
   const [ytUrl, setYtUrl] = useState('');
   const [erorr, setError] = useState();
 
-  const [streamUrl, setStreamUrl] = useState('');
+  const [serverUrl, setServerUrl] = useState('');
 
   const handleChange = (e) => {
     setstreamInfo('');
-    setStreamUrl('');
+    setServerUrl('');
     setYtUrl(e.target.value);
   }
 
@@ -27,7 +27,7 @@ export default function App () {
         const info = await YtConvert.getStreamInfo(ytUrl);
 
         setstreamInfo(info);
-        setStreamUrl(YtConvert.downloadAudio(ytUrl));
+        setServerUrl(YtConvert.downloadAudio(ytUrl));
         setError('')
       } catch (error) {
         //console.log(error);
@@ -42,7 +42,7 @@ export default function App () {
         const info = await YtConvert.getStreamInfo(ytUrl);
 
         setstreamInfo(info);
-        setStreamUrl(YtConvert.downloadVideo(ytUrl));
+        setServerUrl(YtConvert.downloadVideo(ytUrl));
         setError('')
       } catch (error) {
         //console.log(error);
@@ -68,7 +68,7 @@ export default function App () {
         </div>
 
         <p className="color-red">{erorr}</p>
-        {streamUrl && <ProgressBar />}
+        {serverUrl && <ProgressBar />}
       </div>
 
       <div className="w-100">
@@ -78,15 +78,17 @@ export default function App () {
           && <MediaObject info={streamInfo} ytUrl={ytUrl} />
         }
 
-        {streamUrl
-          && streamUrl.length > 50
-          && <a className="bg-green" href={streamUrl} download><i className="fas fa-download"></i> download</a>}
+        {serverUrl
+          && serverUrl.length > 50
+          && <a className="btn-download bg-green" href={serverUrl} download>
+            <i className="fas fa-download"></i> download
+          </a>}
       </div>
     </div>
 
     <div className="jumbotron">
       <h3><i className="fab fa-empire"></i> Youdzik</h3>
-      <p>Our website, which has Youtube Music download service, offers youtube converter service to the users. Copy the URL from the Youtube site, paste it into the search form, download the desired file as audio file (mp3) or video file (mp4).</p>
+      <p>Our website, offers youtube converter service to the users. Copy the URL from the Youtube site, paste it into the search form, download the desired file as audio file (mp3) or video file (mp4).</p>
     </div>
 
     <Footer />

@@ -22,9 +22,17 @@
 .color-yellow {color: yellow;}
 .color-red {    color: #8f0000;}
 /**/
-.border-left {border-left: 1px solid #ddd !important; padding-left: 10px !important;}
+.border-left {border-left: 1px solid #ddd !important; padding-left: 20px !important;}
+.border-bottom {border-bottom: 1px solid #ddd !important; padding-bottom:20px !important;}
 
 .b-sha {box-shadow: none !important;}
 
 p {font-family: 'Lato' !important ;
   word-break: break-all;}
+
+  /**/
+
+.d-flex {display: flex; justify-content: center; align-items: center;}
+.d-flex-col {display: flex; flex-direction: column;}
+
+.d-flex-row {display: flex; }

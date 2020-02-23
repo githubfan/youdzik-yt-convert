@@ -36,7 +36,7 @@ body {
 
 h2 {
   font-family: 'Sriracha';
-  color: #8f0000;
+  color: #ca0505;
   font-size: 30px;
 }
 
@@ -86,7 +86,7 @@ a {
   padding: 6px 24px;
   cursor: pointer;
   text-transform: uppercase;
-  background: #8f0000;
+  background: #ca0505;
   color: #ffffff;
   border: 0;
   transition: background-color .3s ease-in-out;
@@ -95,9 +95,11 @@ a {
   -webkit-font-smoothing: antialiased;
 }
 
-a {
+.btn-download {
   padding: 12px 30px;
 }
+
+.btn-download:hover {background-color: #00740a;}
 
 .link {
   background-color: inherit !important;
@@ -110,7 +112,7 @@ a {
 
 button:hover,
 button:active {
-  background-color: orange !important;
+  background-color: #8f0000 !important;
   color: #FFFFFF !important;
 }
 
@@ -128,4 +130,21 @@ footer {
   footer {
     max-width: 90% !important;
   }
+}
+
+/* */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ca0505;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8f0000;
 }
