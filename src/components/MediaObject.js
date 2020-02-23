@@ -10,6 +10,9 @@ export default function MediaObject ({ info, ytUrl }) {
     />
 
     <div className="border-left">
+      <h4 className="m-0 mb-10">Title:</h4>
+      <p className="mt-0">{info && info.title}</p>
+
       <h4 className="m-0 mb-10">Description:</h4>
       <p className="mt-0">{info && info.description}</p>
 

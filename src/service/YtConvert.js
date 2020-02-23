@@ -12,7 +12,7 @@ export default class YtConvert {
   }
 
   static async ytToMp3 (inputVal) {
-    const END_POINT = `https://box-myserver.unubo.app/api/yt/mp3/download?url=${inputVal}`;
+    const END_POINT = `${BASE_URL}/mp3/download?url=${inputVal}`;
     const response = await axios({
       method: 'GET',
       responseType: 'arraybuffer',
@@ -40,10 +40,10 @@ export default class YtConvert {
   }
 
   static downloadAudio(inputVal) {
-    return `https://box-myserver.unubo.app/api/yt/mp3/download?url=${inputVal}`;
+    return `${BASE_URL}/mp3/download?url=${inputVal}`;
   }
 
   static downloadVideo(inputVal) {
-    return `https://box-myserver.unubo.app/api/yt/mp4/download?url=${inputVal}`;
+    return `${BASE_URL}/mp4/download?url=${inputVal}`;
   }
 } 
