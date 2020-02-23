@@ -6,46 +6,54 @@ import MediaObject from './components/MediaObject';
 import Footer from './components/Footer';
 import ProgressBar from './components/ProgressBar';
 
-function App () {
+export default function App () {
 
   const [streamInfo, setstreamInfo] = useState({});
 
   const [ytUrl, setYtUrl] = useState('');
+  const [erorr, setError] = useState();
+
   const [streamUrl, setStreamUrl] = useState('');
 
   const handleChange = (e) => {
+    setstreamInfo('');
     setStreamUrl('');
     setYtUrl(e.target.value);
   }
 
   const ytToAudio = async () => {
-    try {
-      const info = await YtConvert.getStreamInfo(ytUrl);
+    if (ytUrl.startsWith('https://www.youtube.com/watch?v=')) {
+      try {
+        const info = await YtConvert.getStreamInfo(ytUrl);
 
-      setstreamInfo(info);
-      setStreamUrl(YtConvert.downloadAudio(ytUrl));
-
-    } catch (error) {
-      //console.log(error);
+        setstreamInfo(info);
+        setStreamUrl(YtConvert.downloadAudio(ytUrl));
+        setError('')
+      } catch (error) {
+        //console.log(error);
+      }
     }
+    else setError('Invalid url..');
   }
 
   const ytToVideo = async () => {
-    try {
-      const info = await YtConvert.getStreamInfo(ytUrl);
+    if (ytUrl.startsWith('https://www.youtube.com/watch?v=')) {
+      try {
+        const info = await YtConvert.getStreamInfo(ytUrl);
 
-      setstreamInfo(info);
-      setStreamUrl(YtConvert.downloadVideo(ytUrl));
-
-    } catch (error) {
-      //console.log(error);
-    }
+        setstreamInfo(info);
+        setStreamUrl(YtConvert.downloadVideo(ytUrl));
+        setError('')
+      } catch (error) {
+        //console.log(error);
+      }
+    } else setError('Invalid url..');
   }
 
   return <>
     <div className="jumbotron">
 
-      <h2 className="m-0">YouTube MP3 converter</h2>
+      <h2 className="m-0">YouTube converter</h2>
       <p className="fs-18 mt-0">Free and extremely fast</p>
 
       <div className="w-100">
@@ -56,9 +64,10 @@ function App () {
         />
         <div className="w-100 mb-20">
           <button className="mr-20" type="button" onClick={ytToAudio}>mp3</button>
-          <button type="button" onClick={ytToVideo}>mp4</button>
+          <button type="button" onClick={ytToVideo}> mp4</button>
         </div>
 
+        <p className="color-red">{erorr}</p>
         {streamUrl && <ProgressBar />}
       </div>
 
@@ -77,11 +86,9 @@ function App () {
 
     <div className="jumbotron">
       <h3><i className="fab fa-empire"></i> Youdzik</h3>
-      <p>Our website, which has Youtube Music download service, offers youtube converter service to the users. Copy the URL from the Youtube site, paste it into the search form, download the desired file as audio file (mp3) or video file (mp4)</p>
+      <p>Our website, which has Youtube Music download service, offers youtube converter service to the users. Copy the URL from the Youtube site, paste it into the search form, download the desired file as audio file (mp3) or video file (mp4).</p>
     </div>
 
     <Footer />
   </>;
 }
-
-export default App;

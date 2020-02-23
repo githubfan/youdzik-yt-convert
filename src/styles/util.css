@@ -17,8 +17,11 @@
 
 .w-100 {width: 100% !important;}
 
+/**/
 .bg-green {     background-color: #1E8E3E; color: #ffffff; }
-
+.color-yellow {color: yellow;}
+.color-red {    color: #8f0000;}
+/**/
 .border-left {border-left: 1px solid #ddd !important; padding-left: 10px !important;}
 
 .b-sha {box-shadow: none !important;}
