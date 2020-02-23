@@ -1,19 +1,23 @@
-import React from 'react'
+import React from 'react';
+import '../styles/media-object.css';
 
 export default function MediaObject ({ info, ytUrl }) {
   return (
-    <div className="media mb-3 w-75 mx-auto box">
+    <div className="media-info w-100 mb-20">
       <img
         src={`https://i.ytimg.com/vi/${ytUrl.split('=')[1]}/0.jpg`}
-        className="mr-3"
         alt="youtube"
-        style={{ maxWidth: '100px' }}
       />
 
-      <div className="media-body">
-        <h5 className="mt-0">{info && info.description}</h5>
-        <p className="m-0">{info.author && info.author.name}</p>
-        {info.media && info.media.category}
+      <div>
+        <h4 className="m-0 mb-10"><i className="fas fa-info-circle"></i> Description:</h4>
+        <p className="mt-0">{info && info.description}</p>
+
+        <h4 className="m-0 mb-10"><i className="fas fa-user-tag"></i> Channel</h4>
+        <p className="mt-0">{info.author && info.author.name}</p>
+
+        <h4 className="m-0 mb-10"><i className="fas fa-bars"></i> Category:</h4>
+        <p className="mt-0">{info.media && info.media.category}</p>
       </div>
     </div>
   )

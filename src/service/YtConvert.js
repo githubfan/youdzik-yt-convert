@@ -39,7 +39,11 @@ export default class YtConvert {
     return data;
   }
 
-  static redirectServer(inputVal) {
+  static downloadAudio(inputVal) {
     return `https://box-myserver.unubo.app/api/yt/mp3/download?url=${inputVal}`;
   }
-}
+
+  static downloadVideo(inputVal) {
+    return `https://box-myserver.unubo.app/api/yt/mp4/download?url=${inputVal}`;
+  }
+} 

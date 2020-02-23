@@ -1,0 +1,14 @@
+.media-info {
+  display: flex;
+  padding-top: 20px;  
+  padding-bottom: 20px;
+  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #dddddd;
+}
+
+.media-info img {
+  max-width: 200px;
+  max-height: 200px;
+  margin-right: 20px;
+  object-fit: cover;
+}

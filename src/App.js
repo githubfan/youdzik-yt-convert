@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import './styles/bootstrap.css';
+import './styles/style.css';
+import './styles/util.css';
 import YtConvert from './service/YtConvert';
 import MediaObject from './components/MediaObject';
+import Footer from './components/Footer';
 
 function App () {
 
-  const [streamInfo, setstreamInfo] = useState({})
+  const [streamInfo, setstreamInfo] = useState({});
+
   const [ytUrl, setYtUrl] = useState('');
   const [audioUrl, setAudioUrl] = useState('');
 
@@ -13,59 +16,70 @@ function App () {
     setYtUrl(e.target.value);
   }
 
-  const handleConvert = async () => {
+  const ytToAudio = async () => {
+    
     try {
       // get stream media infos
       const info = await YtConvert.getStreamInfo(ytUrl);
-      setstreamInfo(info);
-      setAudioUrl(YtConvert.redirectServer(ytUrl));
 
+      setstreamInfo(info);
+      setAudioUrl(YtConvert.downloadAudio(ytUrl));      
     } catch (error) {
       //console.log(error);
     }
   }
 
-  return (
-    <main>
-      <nav className="navbar navbar-light bg-light">
-        <div className="container"><span className="navbar-brand mb-0 h1">YOUDZIK</span></div>
-      </nav>
+  const ytToVideo = async () => {
+    
+    try {
+      // get stream media infos
+      const info = await YtConvert.getStreamInfo(ytUrl);
 
-      <div class="jumbotron">
-      <div className="container mt-5">
-        <h2 className="w-50 mx-auto mb-5">YouTube MP3 converter to download videos easily, free and extremely fast</h2>
+      setstreamInfo(info);
+      setAudioUrl(YtConvert.downloadVideo(ytUrl));      
+    } catch (error) {
+      //console.log(error);
+    }
+  }
 
-        <div className="input-group mt-3 mb-3 w-75 mx-auto">
-          <input type="text" className="form-control form-control-lg"
-            placeholder="https://www.youtube.com/watch?v=7Zl2AT5tTbI"
-            aria-describedby="button-addon4"
-            onChange={handleChange}
-            value={ytUrl}
-            required
-          />
-          <div className="input-group-append" id="button-addon4">
-            <button className="btn btn-outline-secondary"
-              type="button"
-              onClick={handleConvert}>mp3</button>
+  return <>
+    <div className="jumbotron">
 
-            <button className="btn btn-outline-secondary" type="button">mp4</button>
-          </div>
+      <h2 className="m-0">YouTube MP3 converter</h2>
+      <p className="fs-18 mt-0">Free and extremely fast</p>
+
+      <div className="w-100">
+        <input type="search" placeholder="https://www.youtube.com/watch?v=7Zl2AT5tTbI"
+          onChange={handleChange}
+          value={ytUrl}
+          required
+        />
+        <div className="w-100 mb-20">
+          <button className="mr-20" type="button" onClick={ytToAudio}>mp3</button>
+          <button type="button" onClick={ytToVideo}>mp4</button>
         </div>
+      </div>
 
-        <div className="w-75 mx-auto">
+      <div className="w-100">
+        {
+          streamInfo
+          && Object.keys(streamInfo).length > 2
+          && <MediaObject info={streamInfo} ytUrl={ytUrl} />
+        }
+
         {audioUrl
           && audioUrl.length > 50
-          && <a className="btn btn-success w-100 mb-3 btn-lg" href={audioUrl} download>download</a>}
-        </div>
-
-        {streamInfo && Object.keys(streamInfo).length > 2 
-        && <MediaObject info={streamInfo} ytUrl={ytUrl} />}
-        
+          && <a className="bg-green" href={audioUrl} download><i className="fas fa-download"></i> download</a>}
       </div>
-    
     </div>
-    </main>
-  );
+
+    <div className="jumbotron">
+      <h3><i className="fab fa-empire"></i> Youdzik</h3>
+      <p>Our website, which has Youtube Music download service, offers youtube converter service to the users. Copy the URL from the Youtube site, paste it into the search form, download the desired file as audio file (mp3) or video file (mp4)</p>      
+    </div>
+
+    <Footer />
+  </>;
 }
 
 export default App;
