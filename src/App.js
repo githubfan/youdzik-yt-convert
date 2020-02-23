@@ -4,39 +4,39 @@ import './styles/util.css';
 import YtConvert from './service/YtConvert';
 import MediaObject from './components/MediaObject';
 import Footer from './components/Footer';
+import ProgressBar from './components/ProgressBar';
 
 function App () {
 
   const [streamInfo, setstreamInfo] = useState({});
 
   const [ytUrl, setYtUrl] = useState('');
-  const [audioUrl, setAudioUrl] = useState('');
+  const [streamUrl, setStreamUrl] = useState('');
 
   const handleChange = (e) => {
+    setStreamUrl('');
     setYtUrl(e.target.value);
   }
 
   const ytToAudio = async () => {
-    
     try {
-      // get stream media infos
       const info = await YtConvert.getStreamInfo(ytUrl);
 
       setstreamInfo(info);
-      setAudioUrl(YtConvert.downloadAudio(ytUrl));      
+      setStreamUrl(YtConvert.downloadAudio(ytUrl));
+
     } catch (error) {
       //console.log(error);
     }
   }
 
   const ytToVideo = async () => {
-    
     try {
-      // get stream media infos
       const info = await YtConvert.getStreamInfo(ytUrl);
 
       setstreamInfo(info);
-      setAudioUrl(YtConvert.downloadVideo(ytUrl));      
+      setStreamUrl(YtConvert.downloadVideo(ytUrl));
+
     } catch (error) {
       //console.log(error);
     }
@@ -58,6 +58,8 @@ function App () {
           <button className="mr-20" type="button" onClick={ytToAudio}>mp3</button>
           <button type="button" onClick={ytToVideo}>mp4</button>
         </div>
+
+        {streamUrl && <ProgressBar />}
       </div>
 
       <div className="w-100">
@@ -67,15 +69,15 @@ function App () {
           && <MediaObject info={streamInfo} ytUrl={ytUrl} />
         }
 
-        {audioUrl
-          && audioUrl.length > 50
-          && <a className="bg-green" href={audioUrl} download><i className="fas fa-download"></i> download</a>}
+        {streamUrl
+          && streamUrl.length > 50
+          && <a className="bg-green" href={streamUrl} download><i className="fas fa-download"></i> download</a>}
       </div>
     </div>
 
     <div className="jumbotron">
       <h3><i className="fab fa-empire"></i> Youdzik</h3>
-      <p>Our website, which has Youtube Music download service, offers youtube converter service to the users. Copy the URL from the Youtube site, paste it into the search form, download the desired file as audio file (mp3) or video file (mp4)</p>      
+      <p>Our website, which has Youtube Music download service, offers youtube converter service to the users. Copy the URL from the Youtube site, paste it into the search form, download the desired file as audio file (mp3) or video file (mp4)</p>
     </div>
 
     <Footer />

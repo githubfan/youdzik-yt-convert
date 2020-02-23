@@ -17,7 +17,7 @@ body {
   min-width: 100vw;
   color: #293a46;
   font-family: 'Montserrat', ;
-  background: #f9f9f9 url(../img/1.png);  
+  background-color: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,10 +30,16 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   overflow-y: auto;
 }
-h2 {font-family: 'Sriracha';}
+
+h2 {
+  font-family: 'Sriracha';
+  color: #8f0000;
+  font-size: 30px;
+}
+
 h3 {
   width: 100%;
   font-size: 22px;
@@ -41,16 +47,24 @@ h3 {
   text-align: left !important;
 }
 
-.jumbotron {
+.jumbotron,
+footer {
   width: 100%;
   max-width: 60%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.jumbotron {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.jumbotron:first-child>p {
+  font-family: 'Squada One' !important;
 }
 
 input {
@@ -60,39 +74,58 @@ input {
   font-size: 16px;
   border: 0;
   outline: none;
-  box-shadow: 0px 1px 2px 0px rgba(60,64,67,0.3), 0px 2px 6px 2px rgba(60,64,67,0.15);
+  box-shadow: 0px 1px 2px 0px rgba(60, 64, 67, 0.3), 0px 2px 6px 2px rgba(60, 64, 67, 0.15);
 }
 
-button,a {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: .6px;
-    line-height: 24px;
-    padding: 6px 24px;
-    cursor: pointer;
-    text-transform: uppercase;
-    background: #FFFFFF;
-    color: #000000;
-    border: 0;
-    transition: background-color .3s ease-in-out;    
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-    text-decoration: none;
-    -webkit-font-smoothing: antialiased;
-}
-
-a{ padding: 12px 30px;}
-
-button:hover , button:active {background-color: rgb(85, 47, 255) !important; color: #FFFFFF !important;}
-
-footer {width: 60%;
-  font-size: 12px;
-   display: flex; justify-content: center; align-items: center;
-  background-color: #ffffff;
+button,
+a {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .6px;
+  line-height: 24px;
+  padding: 6px 24px;
+  cursor: pointer;
   text-transform: uppercase;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);}
+  background: #8f0000;
+  color: #ffffff;
+  border: 0;
+  transition: background-color .3s ease-in-out;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  padding: 12px 30px;
+}
+
+.link {
+  background-color: inherit !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0;
+  color: #293a46 !important;
+  font-size: 12px !important;
+}
+
+button:hover,
+button:active {
+  background-color: orange !important;
+  color: #FFFFFF !important;
+}
+
+footer {
+  font-size: 12px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
 
 @media screen and (max-width: 600px) {
-  .jumbotron , footer{
-    max-width: 90%;
+
+  .jumbotron,
+  footer {
+    max-width: 90% !important;
   }
 }
