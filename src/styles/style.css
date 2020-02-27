@@ -31,7 +31,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow-y: auto;
 }
 
 h2 {
@@ -126,7 +125,7 @@ footer {
   text-transform: uppercase;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
 
   .jumbotron,
   footer {

@@ -1,0 +1,20 @@
+.vid-urls {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;  
+  flex-wrap: wrap;
+}
+
+.vid-urls a {
+  width: 22%;
+  padding: 0;
+  background-color: inherit;
+  box-shadow: none;
+  margin-right: 20px !important;
+  margin-bottom: 20px;
+}
+
+.vid-urls img {
+  width: 100%;
+}

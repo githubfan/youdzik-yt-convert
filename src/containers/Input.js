@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { YtContext } from '../provider/YtProvider';
 import YtConvert from '../service/YtConvert';
+import LocalUrl from '../hooks/useLocal';
 
 export default function Input () {
 
@@ -24,6 +25,7 @@ export default function Input () {
           videoServerUrl: YtConvert.downloadVideo(state.ytUrl),
           error: ''
         });
+        LocalUrl.saveUrl(state.ytUrl);
         setYtUrl('');
       } catch (err) {
         //console.log(error);
@@ -42,6 +44,6 @@ export default function Input () {
       <i className="fas fa-search" onClick={ytToAudio}></i>
     </div>
 
-    {state.error.length > 2 && <p className="color-red">{state.error}</p>}
+    {state.error.length > 2 && <p className="color-red">{state.error}</p>}   
   </div>;
 }
