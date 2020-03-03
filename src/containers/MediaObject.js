@@ -8,31 +8,30 @@ export default function MediaObject () {
   const { state } = useContext(YtContext);
   const { streamInfo } = state;
 
-  return <div className="w-100">
-
-    {Object.keys(state.streamInfo).length > 1 && <>
-      <div className="media-info w-100 mb-20">
-        <img
-          src={`https://i.ytimg.com/vi/${state.ytUrl.split('=')[1]}/0.jpg`}
-          alt="youtube"
-        />
-
-        <div className="border-left">
-          <h4 className="m-0 mb-10">Title:</h4>
-          <p className="mt-0">{streamInfo && streamInfo.title}</p>
-
-          <h4 className="m-0 mb-10">Description:</h4>
-          <p className="mt-0">{streamInfo && streamInfo.description}</p>
-
-          <h4 className="m-0 mb-10">Channel:</h4>
-          <p className="mt-0">{streamInfo.author && streamInfo.author.name}</p>
-
-          <h4 className="m-0 mb-10">Category:</h4>
-          <p className="mt-0">{streamInfo.media && streamInfo.media.category}</p>
-        </div>
-      </div>
-
+  return <>{Object.keys(state.streamInfo).length > 1 && <div className="media-info w-100">
+    
+    <div>
+      <img
+        src={`https://i.ytimg.com/vi/${state.ytUrl.split('=')[1]}/0.jpg`}
+        alt="youtube"
+      />
       <BtnsDownload audioServerUrl={state.audioServerUrl} videoServerUrl={state.videoServerUrl} />
-    </>}
-  </div>;
+    </div>
+
+    <div className="border-left">
+      <h4 className="m-0 mb-10">Title:</h4>
+      <p className="mt-0">{streamInfo && streamInfo.title}</p>
+
+      <h4 className="m-0 mb-10">Description:</h4>
+      <p className="mt-0">{streamInfo && streamInfo.description}</p>
+
+      <h4 className="m-0 mb-10">Channel:</h4>
+      <p className="mt-0">{streamInfo.author && streamInfo.author.name}</p>
+
+      <h4 className="m-0 mb-10">Category:</h4>
+      <p className="mt-0">{streamInfo.media && streamInfo.media.category}</p>
+    </div>
+
+  </div>}
+  </>;
 }

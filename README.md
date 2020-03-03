@@ -6,7 +6,7 @@ Free and extremely fast
 - [x] youtube video to mp4
 
 ### Capture
-![](https://i.ibb.co/HB3CfdL/youdzik.png)
+![](https://i.ibb.co/8sdwYJJ/youdzik.png)
 
 ### Logo
 ![](public/logo192.png)

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function BtnsDownload ({ audioServerUrl, videoServerUrl }) {
-  return <div className="w-100 d-flex-end">
+  return <div className="w-100 mt-20">
 
     <a className="btn-download bg-green mr-20" href={audioServerUrl} download>
       <i className="fas fa-download"></i> mp3

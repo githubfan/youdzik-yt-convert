@@ -1,20 +1,19 @@
 .media-info {
   display: flex;
-  padding-top: 20px;  
-  padding-bottom: 20px;
-  border-bottom: 1px solid #dddddd;
-  border-top: 1px solid #dddddd;
+  width: 100%;
+  padding: 20px 130px;
+  background-color: #0c0e0e;
 }
 
 .media-info img {
-  max-width: 200px;
-  max-height: 160px;
+  max-width: 240px;
+  max-height: 200px;
   margin-right: 20px;
   object-fit: cover;
 }
 
 .media-info h4 {  
-  color: #8f0000;
+  color: #ffc107;
   text-transform: uppercase;
   font-size: 14px;
 }

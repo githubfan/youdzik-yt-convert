@@ -12,31 +12,24 @@ html {
 }
 
 body {
+  font-family: 'Raleway', sans-serif;
   margin: 0;
-  min-height: 100vh;
-  min-width: 100vw;
-  color: #293a46;
-  font-family: 'Montserrat', ;
-  background-color: #f9f9f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: #ffffff;
+  background-color: #131718;    
   overflow-x: hidden;
 }
 
 #root {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 h2 {
-  font-family: 'Sriracha';
-  color: #ca0505;
-  font-size: 30px;
+  font-family: 'Bowlby One SC', cursive;
+  color: #ff9800;
+  font-size: 80px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 h3 {
@@ -46,11 +39,22 @@ h3 {
   text-align: left !important;
 }
 
+header {padding: 20px 130px;}
+
+section {
+  width: 100%;
+  height: 70%;
+  padding: 40px 130px;
+  background-color: #131718;
+  background: url(../img/1.png) no-repeat;
+  background-size: cover;
+  box-shadow: 0 16px 28px 0 rgba(24,52,117,.2);
+}
+
 .jumbotron,
 footer {
   width: 100%;
-  max-width: 60%;
-  background-color: #ffffff;
+  background-color: #374244;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
@@ -59,28 +63,9 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 40px 130px;
 }
 
-.jumbotron:first-child>p {
-  font-family: 'Squada One' !important;
-}
-
-input {
-  width: 100%;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  border: 0;
-  outline: none;
-  box-shadow: 0px 1px 2px 0px rgba(60, 64, 67, 0.3), 0px 2px 6px 2px rgba(60, 64, 67, 0.15);
-}
-
-.input {position: relative;}
-.input > i {    position: absolute;
-  right: 20px;
-  top: 10px;
-  cursor: pointer;}
 
 button,
 a {
@@ -91,7 +76,7 @@ a {
   padding: 6px 24px;
   cursor: pointer;
   text-transform: uppercase;
-  background: #ca0505;
+  background: #ff9800;
   color: #ffffff;
   border: 0;
   transition: background-color .3s ease-in-out;
@@ -113,11 +98,11 @@ a {
 
 button:hover,
 button:active {
-  background-color: #8f0000 !important;
+  background-color: #0c0e0e !important;
   color: #FFFFFF !important;
 }
 
-footer {
+footer {  
   font-size: 12px !important;
   display: flex;
   justify-content: center;
@@ -125,27 +110,20 @@ footer {
   text-transform: uppercase;
 }
 
+footer p {color: #ffffff !important;}
+
 @media screen and (max-width: 800px) {
 
+  h2 {font-size: 30px;}
+
+  header,
+  section,
   .jumbotron,
   footer {
-    max-width: 90% !important;
+    padding: 20px !important;
   }
-}
 
-/* */
-::-webkit-scrollbar {
-  width: 10px;
-}
+  section {display: flex; flex-direction: column;}
 
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #ca0505;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #8f0000;
+  .w-70,.input, input {width: 100% !important;}
 }
