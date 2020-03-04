@@ -1,0 +1,16 @@
+.spinner-container {
+  background-color: #1b1c1db3;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-border {
+  width: 5rem;
+  height: 5rem;
+}

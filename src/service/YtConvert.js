@@ -39,11 +39,19 @@ export default class YtConvert {
     return data;
   }
 
-  static downloadAudio(inputVal) {
+  static downloadAudio (inputVal) {
     return `${BASE_URL}/mp3/download?url=${inputVal}`;
   }
 
-  static downloadVideo(inputVal) {
+  static downloadVideo (inputVal) {
     return `${BASE_URL}/mp4/download?url=${inputVal}`;
   }
+
+  static validUrl (url) {
+    let p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+    let patt = new RegExp(p, 'g');
+
+    return patt.test(url);
+  }
+
 } 

@@ -16,3 +16,13 @@
 .btn-rm:hover {
   color: rgb(255, 59, 59);
 }
+
+.old-urls img {transition: background-color .25s;}
+
+.old-urls img:hover {
+  background-color: #ff9800;
+}
+
+.old-url-col {
+  cursor: pointer;
+}

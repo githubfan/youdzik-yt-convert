@@ -4,11 +4,13 @@ import { YtContext } from '../provider/YtProvider';
 import YtConvert from '../service/YtConvert';
 import LocalUrl from '../util/LocalUrl';
 import '../styles/VideoConversion.css';
+import Spinner from '../components/Spinner';
 
 function VideoConversion (props) {
 
-  const [ytUrl, setYtUrl] = useState('');
   const { state, setState } = useContext(YtContext);
+  const [ytUrl, setYtUrl] = useState(state.ytUrl);
+  const [isRunning, setIsRunning] = useState(false);
 
   const handleChange = (e) => {
     setState({ ...state, ytUrl: e.target.value });
@@ -16,30 +18,37 @@ function VideoConversion (props) {
   }
 
   const convertVideo = async (e) => {
+    setIsRunning(true);
     e.preventDefault();
 
-    if (state.ytUrl.startsWith('https://www.youtube.com/watch?v=')) {
+    if (ytUrl.startsWith('https://www.youtube.com/watch?v=') && YtConvert.validUrl(ytUrl)) {
       try {
-        const info = await YtConvert.getStreamInfo(state.ytUrl);
+        const info = await YtConvert.getStreamInfo(ytUrl);
 
         setState({
           ...state,
           streamInfo: info,
-          audioServerUrl: YtConvert.downloadAudio(state.ytUrl),
-          videoServerUrl: YtConvert.downloadVideo(state.ytUrl),
+          audioServerUrl: YtConvert.downloadAudio(ytUrl),
+          videoServerUrl: YtConvert.downloadVideo(ytUrl),
           error: ''
         });
 
-        LocalUrl.saveUrl(state.ytUrl);
+        LocalUrl.saveUrl(ytUrl);
         setYtUrl('');
 
-        props.history.push("/media");
+        setTimeout(() => {
+          setIsRunning(false);
+          props.history.push("/media");
+        }, 1500);
 
       } catch (err) {
         //console.log(error);
       }
+    }    
+    else { 
+      setIsRunning(false);
+      setState({ ...state, error: 'Invalid url..' });       
     }
-    else { setState({ ...state, error: 'Invalid url..' }); }
   }
 
   return <div className="input w-50">
@@ -60,6 +69,8 @@ function VideoConversion (props) {
     {state.error.length > 2 && <div className="alert alert-danger" role="alert">
       <i className="fas fa-info"></i> {state.error}
     </div>}
+
+    {isRunning  && <Spinner />}
 
   </div>;
 }

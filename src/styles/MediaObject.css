@@ -1,5 +1,5 @@
 .media img {
-  max-width: 360px;
+  max-width: 380px;
   max-height: 280px;
 }
 
@@ -13,6 +13,12 @@ pre {
   max-height: 230px;
   white-space: pre-wrap;
   color: #bbbbc9;
+}
+
+.badge {
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 100;
 }
 
 @media screen and (max-width: 980px) {

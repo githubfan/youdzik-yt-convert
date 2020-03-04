@@ -87,6 +87,8 @@ header {
   width: 80%;
 }
 
+p {color: #9eb0bf !important;}
+
 a {
   text-decoration: none !important;
 }
