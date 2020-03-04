@@ -1,0 +1,23 @@
+.media img {
+  max-width: 360px;
+  max-height: 280px;
+}
+
+pre {
+  width: 100% !important;
+  max-height: 230px;
+  white-space: pre-wrap;
+  color: #bbbbc9;
+}
+
+@media screen and (max-width: 980px) {
+  .media {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .media img {
+    display: none;
+  }
+}

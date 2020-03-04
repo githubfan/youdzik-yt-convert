@@ -1,0 +1,18 @@
+.old-urls {position: relative;}
+
+.btn-rm {
+  position: absolute;
+  right: 25px;
+  top: 10px;
+  background-color: transparent;
+  font-size: 25px;
+  color: #dddddd;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  transition: color .25s;
+}
+
+.btn-rm:hover {
+  color: rgb(255, 59, 59);
+}

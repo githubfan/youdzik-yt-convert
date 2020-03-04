@@ -15,4 +15,10 @@ export default class LocalUrl {
     let localSt = localStorage.getItem('yd-urls');
     return localSt ? JSON.parse(localSt) : [];
   }
+
+  static removeOne(url) {
+    let newUrls = this.getUrls().filter(u => !u.includes(url));
+    localStorage.setItem('yd-urls', JSON.stringify(newUrls));
+    return newUrls;
+  }
 }

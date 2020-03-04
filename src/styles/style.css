@@ -32,8 +32,18 @@ h3 {
   margin-bottom: 20px;
 }
 
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
 header {
-  background-image: linear-gradient(#131718d4, #131718b3), url(/static/media/bg.fe19983b.jpg);
+  /* background-image: linear-gradient(#131718d4, #131718b3), url('../img/bg.jpg'); */
+  background-color: #131718b3;
 }
 
 .navbar {
@@ -48,6 +58,8 @@ header {
 
 .jumbotron {
   height: 90vh;
+  padding: 0 !important;
+  margin: 0 !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,13 +71,6 @@ header {
   background-color: #1d2223;
   border: 1px solid #1d2223;
   box-shadow: 0 0.5rem 0.75rem -0.25rem rgba(39, 48, 54, 0.05);
-}
-
-pre {
-  width: 100% !important;
-  max-height: 200px;
-  white-space: pre-wrap;
-  color: #bbbbc9;
 }
 
 .btn {
@@ -98,7 +103,7 @@ a {
     font-size: 40px;
   }
 
-  .w-80{
+  .w-80 {
     width: 100% !important;
   }
 

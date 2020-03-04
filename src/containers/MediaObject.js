@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { YtContext } from '../provider/YtProvider';
-import '../styles/media-object.css';
+import '../styles/MediaObject.css';
 
 export default function MediaObject () {
 
@@ -12,7 +12,7 @@ export default function MediaObject () {
       && <>
         <h3 className="mt-3"><i className="fas fa-video"></i> Converted video</h3>
 
-        <div className="media mb-3 mt-3">
+        <div className="media mb-5 mt-3">
           <img src={`https://i.ytimg.com/vi/${state.ytUrl.split('=')[1]}/0.jpg`} className="img-thumbnail h-50 mr-3 mb-3" alt="..." />
           <div className="media-body">
             <h5 className="mt-0 mb-3">{streamInfo && streamInfo.title}</h5>

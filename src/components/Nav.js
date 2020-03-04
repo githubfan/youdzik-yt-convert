@@ -1,11 +1,11 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Nav () {
   return <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container">
       <Link className="navbar-brand" to="/"><i className="fas fa-dice-d20"></i> Youdzik</Link>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
 
@@ -21,7 +21,7 @@ export default function Nav () {
           </li>
         </ul>
 
-      </div>
+      </div> */}
     </div>
   </nav>;
 }

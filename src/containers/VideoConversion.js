@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { YtContext } from '../provider/YtProvider';
 import YtConvert from '../service/YtConvert';
-import LocalUrl from '../hooks/useLocal';
-import '../styles/input.css';
+import LocalUrl from '../util/LocalUrl';
+import '../styles/VideoConversion.css';
 
-function Input (props) {
+function VideoConversion (props) {
 
   const [ytUrl, setYtUrl] = useState('');
   const { state, setState } = useContext(YtContext);
@@ -15,8 +15,9 @@ function Input (props) {
     setYtUrl(e.target.value);
   }
 
-  const ytToAudio = async (e) => {
+  const convertVideo = async (e) => {
     e.preventDefault();
+
     if (state.ytUrl.startsWith('https://www.youtube.com/watch?v=')) {
       try {
         const info = await YtConvert.getStreamInfo(state.ytUrl);
@@ -28,11 +29,11 @@ function Input (props) {
           videoServerUrl: YtConvert.downloadVideo(state.ytUrl),
           error: ''
         });
+
         LocalUrl.saveUrl(state.ytUrl);
         setYtUrl('');
 
-        props.history.push("/media")
-
+        props.history.push("/media");
 
       } catch (err) {
         //console.log(error);
@@ -41,19 +42,26 @@ function Input (props) {
     else { setState({ ...state, error: 'Invalid url..' }); }
   }
 
-  return <div className="input w-50" onSubmit={ytToAudio}>
-    
-    <form>
+  return <div className="input w-50">
+
+    <form onSubmit={convertVideo} className="mb-3">
       <input type="text" placeholder="https://www.youtube.com/watch?v=7Zl2AT5tTbI"
         onChange={handleChange}
         value={ytUrl}
+        autoComplete="true"
         required
       />
-      <button type="submit" className="btn btn-warning btn-block"><i className="fas fa-search"></i> Search</button>
+      <button type="submit" className="btn btn-warning btn-block">
+        <i className="fas fa-search"></i> Search
+      </button>
     </form>
 
-    {state.error.length > 2 && <p className="color-red">{state.error}</p>}
+
+    {state.error.length > 2 && <div className="alert alert-danger" role="alert">
+      <i className="fas fa-info"></i> {state.error}
+    </div>}
+
   </div>;
 }
 
-export default withRouter(Input)
+export default withRouter(VideoConversion)
