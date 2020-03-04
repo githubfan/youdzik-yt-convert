@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Footer () {
-  return <footer>
+  return <footer className="text-center">
     <a className="link" href="https://github.com/haikelfazzani"
       rel="noopener noreferrer" target="_blank">
       <p>@ 2020 Youdzik.com</p>

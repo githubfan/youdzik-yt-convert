@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { YtContext } from '../provider/YtProvider';
-import BtnsDownload from '../components/BtnsDownload';
 import '../styles/media-object.css';
 
 export default function MediaObject () {
@@ -8,30 +7,34 @@ export default function MediaObject () {
   const { state } = useContext(YtContext);
   const { streamInfo } = state;
 
-  return <>{Object.keys(state.streamInfo).length > 1 && <div className="media-info w-100">
-    
-    <div>
-      <img
-        src={`https://i.ytimg.com/vi/${state.ytUrl.split('=')[1]}/0.jpg`}
-        alt="youtube"
-      />
-      <BtnsDownload audioServerUrl={state.audioServerUrl} videoServerUrl={state.videoServerUrl} />
-    </div>
+  return <>
+    {Object.keys(state.streamInfo).length > 1
+      && <>
+        <h3 className="mt-3"><i className="fas fa-video"></i> Converted video</h3>
 
-    <div className="border-left">
-      <h4 className="m-0 mb-10">Title:</h4>
-      <p className="mt-0">{streamInfo && streamInfo.title}</p>
+        <div className="media mb-3 mt-3">
+          <img src={`https://i.ytimg.com/vi/${state.ytUrl.split('=')[1]}/0.jpg`} className="img-thumbnail h-50 mr-3 mb-3" alt="..." />
+          <div className="media-body">
+            <h5 className="mt-0 mb-3">{streamInfo && streamInfo.title}</h5>
 
-      <h4 className="m-0 mb-10">Description:</h4>
-      <p className="mt-0">{streamInfo && streamInfo.description}</p>
+            <pre className="h-50 mb-3">{streamInfo.media && streamInfo.description}</pre>
 
-      <h4 className="m-0 mb-10">Channel:</h4>
-      <p className="mt-0">{streamInfo.author && streamInfo.author.name}</p>
+            <div className="mt-3">
+            <button className="btn btn-primary mr-2"><i className="fab fa-youtube"></i> {streamInfo.author && streamInfo.author.name}</button>
+            <button className="btn btn-primary mr-2"><i className="fas fa-child"></i> {streamInfo.media && streamInfo.media.category}</button>
 
-      <h4 className="m-0 mb-10">Category:</h4>
-      <p className="mt-0">{streamInfo.media && streamInfo.media.category}</p>
-    </div>
+            <a className="btn btn-warning mr-2" href={state.audioServerUrl} download>
+              <i className="fas fa-download"></i> mp3
+            </a>
 
-  </div>}
+            <a className="btn btn-warning" href={state.videoServerUrl} download>
+              <i className="fas fa-download"></i> mp4
+            </a>
+            </div>
+
+          </div>
+
+        </div>
+      </>}
   </>;
 }

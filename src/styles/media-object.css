@@ -1,19 +1,14 @@
-.media-info {
-  display: flex;
-  width: 100%;
-  padding: 20px 130px;
-  background-color: #0c0e0e;
+.media img {
+max-width: 340px;
+max-height: 300px;
 }
 
-.media-info img {
-  max-width: 240px;
-  max-height: 200px;
-  margin-right: 20px;
-  object-fit: cover;
-}
+@media screen and (max-width: 980px) {
+  .media {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 
-.media-info h4 {  
-  color: #ffc107;
-  text-transform: uppercase;
-  font-size: 14px;
+  .media img {display: none;}
 }

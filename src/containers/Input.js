@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
+import {withRouter} from 'react-router-dom';
 import { YtContext } from '../provider/YtProvider';
 import YtConvert from '../service/YtConvert';
 import LocalUrl from '../hooks/useLocal';
 import '../styles/input.css';
 
-export default function Input () {
+function Input (props) {
 
   const [ytUrl, setYtUrl] = useState('');
   const { state, setState } = useContext(YtContext);
@@ -29,6 +30,10 @@ export default function Input () {
         });
         LocalUrl.saveUrl(state.ytUrl);
         setYtUrl('');
+
+        props.history.push("/media")
+
+
       } catch (err) {
         //console.log(error);
       }
@@ -36,17 +41,19 @@ export default function Input () {
     else { setState({ ...state, error: 'Invalid url..' }); }
   }
 
-  return <div className="input w-70" onSubmit={ytToAudio}>
-    <p className="mt-0"><i className="fas fa-link"></i> Please enter the link to the media</p>
+  return <div className="input w-50" onSubmit={ytToAudio}>
+    
     <form>
       <input type="text" placeholder="https://www.youtube.com/watch?v=7Zl2AT5tTbI"
         onChange={handleChange}
         value={ytUrl}
         required
       />
-      <button type="submit" className="w-100"><i className="fas fa-search"></i> Search</button>
+      <button type="submit" className="btn btn-warning btn-block"><i className="fas fa-search"></i> Search</button>
     </form>
 
     {state.error.length > 2 && <p className="color-red">{state.error}</p>}
   </div>;
 }
+
+export default withRouter(Input)
