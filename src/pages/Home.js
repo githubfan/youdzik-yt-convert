@@ -8,7 +8,7 @@ export default function Home () {
 
     <Nav />
 
-    <video autoPlay muted loop id="myVideo">
+    <video autoPlay muted loop id="myVideo" className="bg-video">
       <source src={vid} type="video/mp4" />
     </video>
 

@@ -3,6 +3,11 @@
   max-height: 280px;
 }
 
+.vid-preview {
+  width: 425px;
+  height: 245px;
+}
+
 pre {
   width: 100% !important;
   max-height: 230px;
@@ -17,7 +22,8 @@ pre {
     flex-wrap: wrap;
   }
 
-  .media img {
+  .media img,
+  .vid-preview {
     display: none;
   }
 }
