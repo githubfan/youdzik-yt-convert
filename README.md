@@ -9,6 +9,7 @@ Free and extremely fast
 
 ### Capture
 ![](https://i.ibb.co/vXksrnB/youdzik.png)
+![](https://i.ibb.co/9hfYSRj/youdzik2.png)
 
 ### Logo
 ![](public/logo192.png)

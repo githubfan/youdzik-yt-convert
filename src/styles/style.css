@@ -93,6 +93,8 @@ a {
   text-decoration: none !important;
 }
 
+footer p {font-size: 12px !important;}
+
 @media screen and (max-width: 1140px) {
   .w-50 {
     width: 60% !important;
